@@ -20,7 +20,7 @@ def get_cron_times(testing: bool = False):
         local_time = datetime.now(local_tz)
         return {
             'hour': local_time.hour,
-            'minute': local_time.minute
+            'minute': local_time.minute + 1
         }
     
     return {

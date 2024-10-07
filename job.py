@@ -30,6 +30,8 @@ def job():
             parsed_internship = parse_commit(commit_data)
             company = parsed_internship['company']
             position = parsed_internship['position']
+
+            # key is used to check for duplicate positions from the same company 
             internship_key = f"{company}:{position}"
             if internship_key not in parsed_internships:
                 parsed_internships[internship_key] = parsed_internship
