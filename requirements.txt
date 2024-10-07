@@ -1,6 +1,6 @@
-os
-discord
+discord.py
 requests
-dotenv
-time
-schedule
+python-dotenv
+apscheduler
+beautifulsoup4
+pytz
