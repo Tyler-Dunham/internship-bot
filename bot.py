@@ -4,10 +4,12 @@ from dotenv import load_dotenv
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 import asyncio
 from job import job
+from utils import get_cron_times
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 CHANNEL = int(os.getenv('CHANNEL_ID'))
+testing = os.getenv('TESTING', 'False').lower() in ('true', '1', 't')
 
 # dumb windows problem where it needs different loop policy
 import asyncio
@@ -42,6 +44,7 @@ async def send_internships():
     print("Sent internships")
 
 scheduler = AsyncIOScheduler()
-scheduler.add_job(send_internships, 'cron', hour=23, minute=59)
+cron = get_cron_times(testing=testing)
+scheduler.add_job(send_internships, 'cron', hour=cron['hour'], minute=cron['minute'])
 
 client.run(TOKEN)
