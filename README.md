@@ -1,0 +1,2 @@
+# internship-bot
+Internship Notifier
