@@ -15,9 +15,12 @@ def get_time(testing: bool = False):
 
 def get_cron_times(testing: bool = False):
     if testing:
+        # get actual hour and minute
+        local_tz = pytz.timezone('America/New_York')
+        local_time = datetime.now(local_tz)
         return {
-            'hour': 4,
-            'minute': 0
+            'hour': local_time.hour,
+            'minute': local_time.minute
         }
     
     return {
