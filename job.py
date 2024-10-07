@@ -15,10 +15,8 @@ def job():
 
     for commit in commits:
         try:
-            sha = commit['sha']
-            commit_data = get_commit(sha)
-            print(commit_data)
-            parsed_internship = parse_commit(commit_data)
+            parsed_internship = parse_commit(commit)
+            print(parsed_internship)
             parsed_internships.append(parsed_internship)
         except Exception as e:
             print(f"Probably rate limited")
@@ -34,13 +32,8 @@ def get_commits(start_date=current_date, end_date=None):
     response = requests.get(url, params=params)
     return response.json()
 
-def get_commit(sha: str):
-    url = f"https://api.github.com/repos/{owner}/{repo}/commits/{sha}"
-    response = requests.get(url)
-    return response.json()
-
 def parse_commit(commit):
-    return [commit['files'][0]['patch'], commit['files'][0]['filename']]
+    return [commit['files'][1]['patch'], commit['files'][0]['filename']]
 
 if __name__ == "__main__":
     job()
