@@ -39,7 +39,7 @@ async def send_internships():
             f"Position: {internship['position']}\n"
             f"Locations: {internship['location']}\n"
             f"URL: <{internship['url']}>\n"
-            f"Apply lazy ass bitch - <@250087120306307073>"
+            f"Apply NOW!!!!!!!!! - <@250087120306307073>"
             f"----------------------------------"
             )
         else:
