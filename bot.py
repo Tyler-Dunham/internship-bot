@@ -33,13 +33,23 @@ async def send_internships():
 
     internships = job()
     for key, internship in internships.items():
-        message = (
+        if 'New York, NY' in internship['location'] or 'Remote' in internship['location']:
+            message = (
+            f"Company: {internship['company']}\n"
+            f"Position: {internship['position']}\n"
+            f"Locations: {internship['location']}\n"
+            f"URL: <{internship['url']}>\n"
+            f"Apply lazy ass bitch - <@250087120306307073>"
+            f"----------------------------------"
+            )
+        else:
+            message = (
             f"Company: {internship['company']}\n"
             f"Position: {internship['position']}\n"
             f"Locations: {internship['location']}\n"
             f"URL: <{internship['url']}>\n"
             f"----------------------------------"
-        )
+            )
         await channel.send(message)
     print("Sent internships")
 
